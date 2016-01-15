@@ -28,28 +28,35 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:textColor="#c6c6c6" />
+                    android:textColor="#666666"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="切断"
+                    android:text="未接続"
                     android:id="@+id/textView_connect"
-                    android:layout_alignParentBottom="true"
+                    android:textColor="#666666"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:textColor="#c6c6c6" />
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:text="接続開始"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/button_design"
+                    android:id="@+id/button_connect"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
+
         </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
-
-        </FrameLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -63,8 +70,8 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:id="@+id/imageView_pad_left"
                     android:src="@drawable/pad_button"
                     android:layout_gravity="center" />
@@ -83,28 +90,16 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Takeoff/Land"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Takeoff"
+                    android:textColor="#ffffff"
                     android:id="@+id/button_takeoff"
+                    android:background="@drawable/button_design"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="接続開始"
-                    android:id="@+id/button_connect"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Stop"
-                    android:id="@+id/button_stop"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <FrameLayout
@@ -120,8 +115,8 @@
                     android:layout_gravity="left|center_vertical" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:id="@+id/imageView_pad_right"
                     android:src="@drawable/pad_button"
                     android:layout_gravity="center" />
@@ -130,12 +125,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imgVideo"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

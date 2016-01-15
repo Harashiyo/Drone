@@ -94,6 +94,7 @@ public class DragViewListenerLeft implements View.OnTouchListener {
     }
 
     void checkCoordinate(int[] coordinate){// [0]:X座標 [1]:Y座標
+        //移動できる範囲を制限
         if(coordinate[0] - mInitialX>90){
             coordinate[0]=mInitialX+90;
         }else if(coordinate[0] - mInitialX<-90){

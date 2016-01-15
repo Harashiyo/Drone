@@ -17,9 +17,10 @@ public class BatteryGetter extends AbstractPeriodicTask {
 
     @Override
     protected void invokersMethod() {
+        //周期的に繰り返される部分
         AsyncDroneconnection battery=new AsyncDroneconnection();
-        battery.execute(13);
-        batteryView.setText(Integer.toString(AsyncDroneconnection.battery)+"%");
+        battery.execute(13);//バッテリー取得
+        batteryView.setText("バッテリー: "+ Integer.toString(AsyncDroneconnection.battery) + "%");//テキスト更新
     }
 
 }
