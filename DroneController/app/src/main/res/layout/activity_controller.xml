@@ -24,21 +24,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="80%"
                     android:id="@+id/textView_battery"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:textColor="#c6c6c6" />
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView_battery"
-                    android:src="@drawable/battery"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/textView_battery"
-                    android:layout_alignBottom="@+id/textView_battery" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,11 +49,6 @@
             android:layout_height="0dp"
             android:layout_weight="6">
 
-            <VideoView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/videoView"
-                android:layout_gravity="center" />
         </FrameLayout>
 
         <LinearLayout
@@ -112,6 +97,14 @@
                     android:id="@+id/button_connect"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stop"
+                    android:id="@+id/button_stop"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <FrameLayout
@@ -137,5 +130,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imgVideo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

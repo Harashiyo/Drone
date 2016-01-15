@@ -2,6 +2,7 @@ package com.example.dronecontroller;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shigeodayo.ardrone.processing.ARDroneForP5;
@@ -11,6 +12,7 @@ import com.shigeodayo.ardrone.processing.ARDroneForP5;
 
 public class AsyncDroneconnection extends AsyncTask<Integer, Void, Void> {
 
+    public static int battery ;
     @Override
     protected Void doInBackground(Integer... params) {
 
@@ -18,12 +20,11 @@ public class AsyncDroneconnection extends AsyncTask<Integer, Void, Void> {
         if(params[0]==1){
             ControllerActivity.ardrone.connect();
             ControllerActivity.ardrone.connectNav();
-            //ardrone.connectVideo();
+            //ControllerActivity.ardrone.connectVideo();
             ControllerActivity.ardrone.start();
-            //Toast.makeText(this, "接続完了", Toast.LENGTH_LONG).show();
         }
-        else if(params[0]==2)   ControllerActivity.ardrone.takeOff();//離陸
-        else if(params[0]==3)   ControllerActivity.ardrone.landing();//着陸
+        else if(params[0]==2)ControllerActivity.ardrone.takeOff();//離陸
+        else if(params[0]==3) ControllerActivity.ardrone.landing();//着陸
 
         else if(params[0]==4)   ControllerActivity.ardrone.up();   //上昇
         else if(params[0]==5)   ControllerActivity.ardrone.down(); //下降
@@ -36,7 +37,15 @@ public class AsyncDroneconnection extends AsyncTask<Integer, Void, Void> {
         else if(params[0]==10)   ControllerActivity.ardrone.spinRight();//右回転
         else if(params[0]==11)   ControllerActivity.ardrone.spinLeft(); //左回転
 
+        else if(params[0]==12)   {
+            ControllerActivity.ardrone.stop(); //停止
+            ControllerActivity.ardrone.disconnect();
+        }
 
+        else if(params[0]==13){
+            battery=ControllerActivity.ardrone.getBatteryPercentage();//バッテリー残量取得
+            Log.d("MyApp", "battery= " + battery);
+        }
         return null;
     }
 }

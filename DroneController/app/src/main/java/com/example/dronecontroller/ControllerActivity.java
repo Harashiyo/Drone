@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.shigeodayo.ardrone.processing.*;
 
@@ -18,6 +19,13 @@ public class ControllerActivity extends Activity {
     ImageView dragViewLeft;
     Button connect;
     Button takeoff;
+    Button stop;
+    TextView battery;
+    TextView connection;
+    BatteryGetter batteryGetter;
+    ImageView video;
+    ConnectionStatus cStatus;
+
     public static final ARDroneForP5 ardrone = new ARDroneForP5("192.168.1.1");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,12 @@ public class ControllerActivity extends Activity {
         dragViewRight = (ImageView) findViewById(R.id.imageView_pad_right);
         connect = (Button) findViewById(R.id.button_connect);
         takeoff = (Button) findViewById(R.id.button_takeoff);
+        stop = (Button) findViewById(R.id.button_stop);
+        battery = (TextView)findViewById(R.id.textView_battery);
+        video=(ImageView)findViewById(R.id.imgVideo);
+        batteryGetter=new BatteryGetter(3000,true,battery);
+        connection=(TextView)findViewById(R.id.textView_connect);
+        cStatus= new ConnectionStatus(connection);
     }
 
     @Override
@@ -35,9 +49,10 @@ public class ControllerActivity extends Activity {
         dragViewLeft.setOnTouchListener(listenerLeft);
         DragViewListenerRight listenerRight = new DragViewListenerRight(dragViewRight);
         dragViewRight.setOnTouchListener(listenerRight);
-        ButtonAction button = new ButtonAction();
+        ButtonAction button = new ButtonAction(this,batteryGetter,cStatus);
         takeoff.setOnClickListener(button);
         connect.setOnClickListener(button);
+        stop.setOnClickListener(button);
     }
 
     @Override
@@ -60,6 +75,17 @@ public class ControllerActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        if(batteryGetter!=null){
+            batteryGetter.cancel();
+        }
+        AsyncDroneconnection disconnect = new AsyncDroneconnection();
+        disconnect.execute(12);
+        cStatus.setDisconnect();
+        super.onPause();
     }
 
 
