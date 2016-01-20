@@ -76,12 +76,6 @@ public class ControllerActivity extends Activity {
         if(batteryGetter!=null){
             batteryGetter.cancel();//バッテリー取得停止
         }
-        wStatus.setTakeoff();//ボタンの表示変更
-        AsyncDroneconnection land=new AsyncDroneconnection();
-        land.execute(3);//着陸させておく
-        AsyncDroneconnection disconnect = new AsyncDroneconnection();
-        disconnect.execute(12);//ドローンとの接続を切っておく
-        wStatus.setDisconnect();//ボタンの表示変更
         super.onPause();
     }
 

@@ -94,15 +94,16 @@ public class DragViewListenerRight implements View.OnTouchListener {
 
     void checkCoordinate(int[] coordinate){// [0]:X座標 [1]:Y座標
         //移動できる範囲を制限
-        if(coordinate[0] - mInitialX>90){
-            coordinate[0]=mInitialX+90;
-        }else if(coordinate[0] - mInitialX<-90){
-            coordinate[0]=mInitialX-90;
+        final int range=120;
+        if(coordinate[0] - mInitialX>range){
+            coordinate[0]=mInitialX+range;
+        }else if(coordinate[0] - mInitialX<-range){
+            coordinate[0]=mInitialX-range;
         }
-        if(mInitialY - coordinate[1]>90){
-            coordinate[1]=mInitialY-90;
-        }else if(mInitialY - coordinate[1] <-90){
-            coordinate[1]=mInitialY+90;
+        if(mInitialY - coordinate[1]>range){
+            coordinate[1]=mInitialY-range;
+        }else if(mInitialY - coordinate[1] <-range){
+            coordinate[1]=mInitialY+range;
         }
     }
 }
